@@ -1,6 +1,7 @@
 <template>
   <main class="columns is-gapless is-mutiline">
     <div class="column is-one-quarter">
+      
       <BarraLateral />
     </div>
     <div class="column is-three-quarter">

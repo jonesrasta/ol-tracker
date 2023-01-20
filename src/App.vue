@@ -5,13 +5,12 @@
       <BarraLateral />
     </div>
     <div class="column is-three-quarter">
-      <FormularioCont />
-
+      <FormularioCont @aoSalvarListaTarefas="salvarListaTarefas" />
       <div class="lista">
-        <ListaTarefas />
-        <ListaTarefas />
-        <ListaTarefas />
-        <ListaTarefas />
+        <ListaTarefas v-for="(listaTarefa, index) in listaTarefas" :key="index" :listaTarefa="listaTarefa" />
+        <BoxList v-if="listaTarefaEstaVazia">
+          Você não está muito produtivo hoje.
+        </BoxList>
       </div>
     </div>
   </main>
@@ -21,6 +20,8 @@ import { defineComponent } from "vue";
 import BarraLateral from './components/BarraLateral.vue'
 import FormularioCont from './components/FormularioCont.vue'
 import ListaTarefas from './components/ListaTarefas.vue'
+import IListaTarefas from "./interfaces/IListaTarefas";
+import BoxList from "./components/BoxList.vue";
 
 
 export default defineComponent({
@@ -29,8 +30,23 @@ export default defineComponent({
     BarraLateral,
     FormularioCont,
     ListaTarefas,
-
+    BoxList
   },
+  data() {
+    return {
+      listaTarefas: [] as IListaTarefas[]
+    }
+  },
+  computed: {
+    listaTarefaEstaVazia () : boolean {
+      return this.listaTarefas.length ===0
+    }
+  },
+  methods: {
+    salvarListaTarefas(listaTarefa: IListaTarefas) {
+      this.listaTarefas.push(listaTarefa)
+    }
+  }
 });
 </script>
 

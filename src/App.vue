@@ -1,10 +1,10 @@
 <template>
-  <main class="columns is-gapless is-mutiline">
+  <main class="columns is-gapless is-mutiline dark-mode">
     <div class="column is-one-quarter">
 
       <BarraLateral />
     </div>
-    <div class="column is-three-quarter">
+    <div class="column is-three-quarter conteudo">
       <FormularioCont @aoSalvarListaTarefas="salvarListaTarefas" />
       <div class="lista">
         <ListaTarefas v-for="(listaTarefa, index) in listaTarefas" :key="index" :listaTarefa="listaTarefa" />
@@ -50,8 +50,19 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
 .lista {
   padding: 1.25rem;
+}
+main {
+  --bg-primario: #fff;
+  --texto-primario: #000;
+}
+main.dark-mode {
+  --bg-primario: #2b2d42;
+  --texto-primario: #ddd;
+}
+.conteudo {
+  background-color: var(--bg-primario);
 }
 </style>

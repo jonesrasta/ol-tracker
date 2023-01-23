@@ -1,7 +1,7 @@
 <template>
   <header>
     <h1>
-      <img src="../assets/logo.png" alt="" />
+      <img src="../assets/logo.svg" alt="Logo Olympus" />
     </h1>
     <!--<aside class="menu m-5 pt-6 mt-8">
             <p class="menu-label has-text-weight-bold">
@@ -55,6 +55,11 @@ header {
   header {
     padding: 1rem;
     height: auto;
+  }
+  h1 {
+    display: flex;
+    justify-content: center;
+      
   }
 }
 </style>

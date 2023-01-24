@@ -4,7 +4,7 @@
       <div class="column is-7">{{listaTarefa.descricao || 'Tarefa sem descrição'}}</div>
       <div class="colunm">
         <CronometroCont :tempoEmSegundos="listaTarefa.duracaoEmSegundos" />
-      </div>
+      </div> 
     </div>
   </BoxList>
 </template>

@@ -3,6 +3,7 @@
     <h1>
       <img src="../assets/logo.svg" alt="Logo Olympus" />
     </h1>
+    <button class="button" @click="alterarTema">{{ textoBotao }}</button>
     <!--<aside class="menu m-5 pt-6 mt-8">
             <p class="menu-label has-text-weight-bold">
                 General
@@ -35,6 +36,26 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "BarraLateral",
+  emits: ["aoTemaAlterado"],
+  data () {
+    return {
+      darkModeAtive: false
+    }
+  },
+  computed: {
+    textoBotao () {
+      if (this.darkModeAtive) {
+        return 'Desativar modo escuro'
+      }
+      return 'Ativar modo escuro'
+    }
+  },
+  methods: {
+    alterarTema() {
+      this.darkModeAtive = !this.darkModeAtive
+      this.$emit("aoTemaAlterado", this.darkModeAtive);
+    },
+  },
 });
 </script>
 
@@ -49,6 +70,7 @@ header {
   );
   width: 100%;
   height: 100vh;
+  text-align: center;
 }
 
 @media only screen and (max-width: 768px) {
@@ -59,7 +81,6 @@ header {
   h1 {
     display: flex;
     justify-content: center;
-      
   }
 }
 </style>

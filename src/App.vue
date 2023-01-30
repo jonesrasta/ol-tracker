@@ -1,8 +1,8 @@
 <template>
-  <main class="columns is-gapless is-mutiline dark-mode">
+  <main class="columns is-gapless is-mutiline" :class="{ 'dark-mode': darkModeAtive}">
     <div class="column is-one-quarter">
 
-      <BarraLateral />
+      <BarraLateral  @aoTemaAlterado="trocarTema"/>
     </div>
     <div class="column is-three-quarter conteudo">
       <FormularioCont @aoSalvarListaTarefas="salvarListaTarefas" />
@@ -34,7 +34,8 @@ export default defineComponent({
   },
   data() {
     return {
-      listaTarefas: [] as IListaTarefas[]
+      listaTarefas: [] as IListaTarefas[],
+      darkModeAtive: false
     }
   },
   computed: {
@@ -45,6 +46,9 @@ export default defineComponent({
   methods: {
     salvarListaTarefas(listaTarefa: IListaTarefas) {
       this.listaTarefas.push(listaTarefa)
+    },
+    trocarTema (darkModeAtive: boolean) {
+      this.darkModeAtive = darkModeAtive
     }
   }
 });

@@ -1,19 +1,20 @@
 <template>
-    <div class="box has-text-weight-bold">
-        <slot></slot>
-    </div>
+  <div class="box has-text-weight-bold" :style="estilos">
+    <slot></slot>
+  </div>
 </template>
 
 <script lang="ts">
-    import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
-    export default defineComponent ({
-        name: 'BoxList'
-    })
+export default defineComponent({
+  name: "BoxList",
+  data() {
+    return {
+      estilos: {
+        backgroundColor: "#f0f0f0",
+      },
+    };
+  },
+});
 </script>
-
-<style scoped>
-.box {
-  background: #f0f0f0;
-}
-</style>

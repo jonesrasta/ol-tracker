@@ -1,56 +1,36 @@
 <template>
-  <main class="columns is-gapless is-mutiline" :class="{ 'dark-mode': darkModeAtive}">
+  <main
+    class="columns is-gapless is-mutiline"
+    :class="{ 'dark-mode': darkModeAtive }"
+  >
     <div class="column is-one-quarter">
-
-      <BarraLateral  @aoTemaAlterado="trocarTema"/>
+      <BarraLateral @aoTemaAlterado="trocarTema" />
     </div>
     <div class="column is-three-quarter conteudo">
-      <FormularioCont @aoSalvarListaTarefas="salvarListaTarefas" />
-      <div class="lista">
-        <ListaTarefas v-for="(listaTarefa, index) in listaTarefas" :key="index" :listaTarefa="listaTarefa" />
-        <BoxList v-if="listaTarefaEstaVazia">
-          Você não está muito produtivo hoje.
-        </BoxList>
-      </div>
+      <router-view></router-view>
     </div>
   </main>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import BarraLateral from './components/BarraLateral.vue'
-import FormularioCont from './components/FormularioCont.vue'
-import ListaTarefas from './components/ListaTarefas.vue'
-import IListaTarefas from "./interfaces/IListaTarefas";
-import BoxList from "./components/BoxList.vue";
-
+import BarraLateral from "./components/BarraLateral.vue";
 
 export default defineComponent({
   name: "App",
   components: {
     BarraLateral,
-    FormularioCont,
-    ListaTarefas,
-    BoxList
   },
   data() {
     return {
-      listaTarefas: [] as IListaTarefas[],
-      darkModeAtive: false
-    }
+      darkModeAtive: false,
+    };
   },
-  computed: {
-    listaTarefaEstaVazia () : boolean {
-      return this.listaTarefas.length ===0
-    }
-  },
+
   methods: {
-    salvarListaTarefas(listaTarefa: IListaTarefas) {
-      this.listaTarefas.push(listaTarefa)
+    trocarTema(darkModeAtive: boolean) {
+      this.darkModeAtive = darkModeAtive;
     },
-    trocarTema (darkModeAtive: boolean) {
-      this.darkModeAtive = darkModeAtive
-    }
-  }
+  },
 });
 </script>
 

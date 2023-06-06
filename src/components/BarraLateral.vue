@@ -4,30 +4,22 @@
       <img src="../assets/logo.svg" alt="Logo Olympus" />
     </h1>
     <button class="button" @click="alterarTema">{{ textoBotao }}</button>
-    <!--<aside class="menu m-5 pt-6 mt-8">
-            <p class="menu-label has-text-weight-bold">
-                General
-            </p>
-            <ul class="menu-list">
-                <li><a>Dashboard</a></li>
-                <li><a>Customers</a></li>
-                <li><a>Members</a></li>
-                <li><a>Plugins</a></li>
-               <a class="is-active">Manage Your Team</a>
-            </ul>
-            <p class="menu-label has-text-weight-bold">
-                Administration
-            </p>
-            <ul class="menu-list">
-                <li>
-                    <a>Dark Mode</a>
-                    <a>Ocultar barra lateral</a>
-                    <a>Tarefas em andamento</a>
-                    <a>Tarefas finalizadas</a>
-                </li>
-            </ul>
-
-        </aside>-->
+    <nav class="panel">
+      <ul>
+        <li>
+          <router-link to="/" class="link">
+            <i class="fas fa-tasks"></i>
+            Tarefas
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/projetos" class="link">
+            <i class="fas fa-project-diagram"></i>
+            Projetos
+          </router-link>
+        </li>
+      </ul>
+    </nav>
   </header>
 </template>
 
@@ -37,22 +29,22 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "BarraLateral",
   emits: ["aoTemaAlterado"],
-  data () {
+  data() {
     return {
-      darkModeAtive: false
-    }
+      darkModeAtive: false,
+    };
   },
   computed: {
-    textoBotao () {
+    textoBotao() {
       if (this.darkModeAtive) {
-        return 'Desativar modo escuro'
+        return "Desativar modo escuro";
       }
-      return 'Ativar modo escuro'
-    }
+      return "Ativar modo escuro";
+    },
   },
   methods: {
     alterarTema() {
-      this.darkModeAtive = !this.darkModeAtive
+      this.darkModeAtive = !this.darkModeAtive;
       this.$emit("aoTemaAlterado", this.darkModeAtive);
     },
   },
@@ -82,5 +74,17 @@ header {
     display: flex;
     justify-content: center;
   }
+}
+
+.panel li {
+  margin: 8px 0;
+}
+
+.link:hover {
+  color: #faf0ca;
+}
+
+.link.router-link-active {
+  color: #faf0ca;
 }
 </style>

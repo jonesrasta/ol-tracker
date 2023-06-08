@@ -43,8 +43,7 @@ import { useStore } from "@/store";
 import { EXCLUIR_PROJETO } from "@/store/tipo-mutacoes";
 
 export default defineComponent({
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: "Lista",
+  name: "ListaList",
   methods: {
     excluir (id: string ){
       this.store.commit(EXCLUIR_PROJETO, id)

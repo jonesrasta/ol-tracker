@@ -23,8 +23,7 @@ import { useStore } from "@/store";
 
 import { ALTERA_PROJETO, ADICIONA_PROJETO } from "@/store/tipo-mutacoes";
 export default defineComponent({
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: "Formulario",
+  name: "FormularioList",
   props: {
     id: {
       type: String,

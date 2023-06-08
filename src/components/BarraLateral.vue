@@ -3,7 +3,7 @@
     <h1>
       <img src="../assets/logo.svg" alt="Logo Olympus" />
     </h1>
-    <button class="button" @click="alterarTema">{{ textoBotao }}</button>
+    <button class="button mt-4" @click="alterarTema">{{ textoBotao }}</button>
     <nav class="panel">
       <ul>
         <li>
@@ -79,7 +79,9 @@ header {
 .panel li {
   margin: 8px 0;
 }
-
+.link {
+  color:rgb(165, 171, 177)
+}
 .link:hover {
   color: #faf0ca;
 }
@@ -87,4 +89,5 @@ header {
 .link.router-link-active {
   color: #faf0ca;
 }
+
 </style>
